@@ -1,4 +1,15 @@
 Messagelearn::Application.routes.draw do
+  resources :messages
+
+
+  resources :users
+
+  resources :sessions, only: [:new, :create, :destroy]
+  get "/login" => "sessions#new", as: "login"
+  delete "/logout" => "sessions#destroy", as: "logout"
+
+  root to: "users#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
